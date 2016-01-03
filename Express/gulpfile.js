@@ -30,7 +30,7 @@ gulp.task('inject', function() {
 		ignorePath: '/public'
 	};
 
-	return gulp.src('./src/views/*.html')
+	return gulp.src('./src/views/*.ejs')
 	.pipe(wiredep(options))
 	.pipe(inject(injectSrc,injectOptions))
 	.pipe(gulp.dest('./src/views'));
@@ -41,10 +41,10 @@ gulp.task('serve',['style','inject'], function() {
 		script: 'app.js',
 		delayTime: 1,
 		env: {
-			'PORT': 3000
+			'PORT': 5000
 		},
 		watch: jsfiles
-	}
+	};
 	return nodemon(options)
 	.on('restart',function(ev) {
 		console.log('Restarting...');
